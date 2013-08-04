@@ -3,9 +3,8 @@ import org.springframework.util.AntPathMatcher
 
 @Log
 class Main {
-
     static void main(String[] args) {
-        def cli = new CliBuilder(usage: 'Main.groovy [style=<ant|regex>] [help] [pattern <value>] [url <value>]')
+        def cli = new CliBuilder(usage: 'Main.groovy [--style <ant|regex>] [--help] --pattern <value> --url <value>')
         cli.width = 100
 
         cli.with {
@@ -16,31 +15,35 @@ class Main {
         }
 
         def options = cli.parse(args)
-        if (!options || args.size() == 0 || options.help) {
+        if (!options || args.size() == 0 || options.help || !options.u || !options.p) {
             cli.usage()
             return
         }
         println()
 
-        def styleName = options.s[0].toUpperCase() + options.s[1..-1]
+       	def styleName = "Ant"
+        if (options.s) {
+			styleName = options.s[0].toUpperCase() + options.s[1..-1]
+        }
+
         def m = new Main()
         m."testPattern$styleName"(options.p, options.u)
     }
 
     def testPatternRegex(pattern, url) {
         if (url.matches(pattern)) {
-            log.info("Specified url [" + url + "] matches the given pattern [" + pattern + "]")
+            log.info("Specified url [" + url + "] matches the given Regex pattern [" + pattern + "]")
         } else {
-            log.info("Specified url [" + url + "] does not match the given pattern [" + pattern + "]")
+            log.info("Specified url [" + url + "] does not match the Regex given pattern [" + pattern + "]")
         }
     }
 
     def testPatternAnt(String pattern, String url) {
         def ant = new AntPathMatcher()
         if (ant.match(pattern, url)) {
-            log.info("Specified url [" + url + "] matches the given pattern [" + pattern + "]")
+            log.info("Specified url [" + url + "] matches the given Ant pattern [" + pattern + "]")
         } else {
-            log.info("Specified url [" + url + "] does not match the given pattern [" + pattern + "]")
+            log.info("Specified url [" + url + "] does not match the Ant given pattern [" + pattern + "]")
         }
     }
 }
