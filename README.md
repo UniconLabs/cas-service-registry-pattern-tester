@@ -1,7 +1,7 @@
 cas-service-registry-pattern-tester
 ===================================
 
-A Groovy CLI utility to test service registry definitions
+A Groovy CLI utility to test service registry definitions. Ant pattern matching is based on the `spring-core-3.2.3` library.
 
 ## Usage
 
