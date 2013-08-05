@@ -9,7 +9,7 @@ class Main {
         cli.width = 100
 
         cli.with {
-            s longOpt: 'style', args:1, argName: 'value', 'Specify the service pattern style'
+            s longOpt: 'style', args:1, argName: 'value', 'Specify the service pattern style. Default is Ant'
             h longOpt: 'help', 'Show usage information'
             p longOpt: 'pattern', args:1, argName: 'value',
                     'The ant/regex pattern to test against the service; Could also be a path to the JSON service registry file' +
