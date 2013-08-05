@@ -36,7 +36,7 @@ class Main {
                 if (pattern.startsWith("^")) {
                     m.testPatternRegex(pattern, options.u)
                 } else {
-                    m(pattern, options.u)
+                    m.testPatternAnt(pattern, options.u)
                 }
             }
         } else {
