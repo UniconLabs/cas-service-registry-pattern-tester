@@ -18,9 +18,20 @@ usage: Main.groovy [--style <ant|regex>] [--help] --pattern <value> --url <value
 
 ## Examples
 
+Single url:
 ```
 $ groovy -cp .groovy/lib/* src/Main.groovy -p http?://** -u https://www.google.com
 
 Aug 04, 2013 4:46:37 PM java_util_logging_Logger$info call
 INFO: Specified url [https://www.google.com] matches the given Ant pattern [http?://**]
+```
+
+[JSON service registry](https://github.com/Unicon/cas-addons/wiki/Configuring%20JSON%20Service%20Registry):
+```
+$ groovy -cp .groovy/lib/* src/Main.groovy -u http://www.yahoo.com -p c:\\etc\\cas\\servicesRegistry.conf
+
+Aug 04, 2013 7:22:06 PM java_util_logging_Logger$info call
+INFO: Using [C:\etc\cas\servicesRegistry.conf] to evaluate matches against the specified url [http://www.yahoo.com]
+Aug 04, 2013 7:22:06 PM java_util_logging_Logger$info call
+INFO: Specified url [http://www.yahoo.com] matches the given Regex pattern [^(https?|imaps?)://.*]
 ```
