@@ -12,7 +12,7 @@ class Main {
             s longOpt: 'style', args:1, argName: 'value', 'Specify the service pattern style. Default is Ant'
             h longOpt: 'help', 'Show usage information'
             p longOpt: 'pattern', args:1, argName: 'value',
-                    'The ant/regex pattern to test against the service; Could also be a path to the JSON service registry file' +
+                    'The ant/regex pattern to test against the service; Could also be a path to the JSON service registry file ' +
                     'in which case all service patterns in the registry are matches against the given url'
             u longOpt: 'url', args:1, argName: 'value', 'The url that is to be evaluated against the pattern'
         }
